@@ -1,4 +1,6 @@
-# RealWorld API Backend - TypeScript, Express, TypeORM
+# ![RealWorld Example App](https://raw.githubusercontent.com/gothinkster/realworld/master/media/realworld.png)
+
+> ### Express/TypeScript/TypeORM codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
 
 [![RealWorld Backend](https://img.shields.io/badge/realworld-backend-%23783578.svg)](http://realworld.io)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
@@ -6,115 +8,25 @@
 [![TypeORM](https://img.shields.io/badge/TypeORM-0.3-orange)](https://typeorm.io/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)](https://www.mysql.com/)
 
-A backend implementation of the [RealWorld](https://github.com/gothinkster/realworld) spec using TypeScript, Express.js, TypeORM, and MySQL.
+### [Demo](https://demo.realworld.io/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
 
-## Overview
+This codebase was created to demonstrate a fully fledged fullstack application built with **Express.js, TypeScript, and TypeORM** including CRUD operations, authentication, routing, pagination, and more.
 
-This project is a production-ready backend implementation of the RealWorld "Conduit" blog application. It adheres to the [RealWorld API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction) and features:
+We've gone to great lengths to adhere to the **Express.js** community styleguides & best practices.
 
-- RESTful API with Express.js
-- Strong typing with TypeScript
-- MySQL database integration with TypeORM
-- JWT authentication
-- Article management with CRUD operations
-- User profiles, comments, and follows
-- Tagging and article favoriting
+For more information on how this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
 
-## Getting Started
+# How it works
 
-### Prerequisites
+This is a backend implementation of the RealWorld spec using:
 
-- Node.js (v18+ recommended)
-- MySQL (v8.0+ recommended)
-- npm or yarn
+- **TypeScript** for type safety and enhanced developer experience
+- **Express.js** as the web framework for handling HTTP requests
+- **TypeORM** for database operations and model management
+- **MySQL** as the database engine
+- **JWT** for secure authentication
 
-### Installation
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/realworld-app-backend-typescript-express-typeorm.git
-cd realworld-app-backend-typescript-express-typeorm
-```
-
-2. Install dependencies
-
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Configure environment variables
-
-Copy the `.env.example` file to `.env` and update the variables:
-
-```bash
-cp .env.example .env
-```
-
-Update the `.env` file with your MySQL connection details and JWT secret.
-
-4. Run database migrations
-
-```bash
-npm run migration:run
-# or
-yarn migration:run
-```
-
-5. Start the development server
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-The API will be available at `http://localhost:8000/api`.
-
-## API Endpoints
-
-The API implements all endpoints defined in the [RealWorld API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints):
-
-### Authentication
-
-- `POST /api/users/login` - Login for existing user
-- `POST /api/users` - Register a new user
-- `GET /api/user` - Get current user
-- `PUT /api/user` - Update user
-
-### Profiles
-
-- `GET /api/profiles/:username` - Get a profile
-- `POST /api/profiles/:username/follow` - Follow a user
-- `DELETE /api/profiles/:username/follow` - Unfollow a user
-
-### Articles
-
-- `GET /api/articles` - Get recent articles
-- `GET /api/articles/feed` - Get articles from followed users
-- `GET /api/articles/:slug` - Get an article
-- `POST /api/articles` - Create an article
-- `PUT /api/articles/:slug` - Update an article
-- `DELETE /api/articles/:slug` - Delete an article
-
-### Comments
-
-- `GET /api/articles/:slug/comments` - Get comments for an article
-- `POST /api/articles/:slug/comments` - Add comment to an article
-- `DELETE /api/articles/:slug/comments/:id` - Delete a comment
-
-### Favorites
-
-- `POST /api/articles/:slug/favorite` - Favorite an article
-- `DELETE /api/articles/:slug/favorite` - Unfavorite an article
-
-### Tags
-
-- `GET /api/tags` - Get all tags
-
-## Project Structure
+The application follows a structured architecture:
 
 ```
 ├── src/
@@ -133,31 +45,107 @@ The API implements all endpoints defined in the [RealWorld API spec](https://rea
 └── scripts/               # Build and deployment scripts
 ```
 
-## Scripts
+# Getting started
 
-- `npm run build` - Compile TypeScript to JavaScript
-- `npm start` - Start the production server
-- `npm run dev` - Start the development server with hot-reloading
-- `npm test` - Run tests
-- `npm run lint` - Run ESLint
-- `npm run migration:generate` - Generate new migrations
-- `npm run migration:run` - Run migrations
-- `npm run migration:revert` - Revert the latest migration
+## Prerequisites
 
-## Documentation
+- Node.js (v18+ recommended)
+- MySQL (v8.0+ recommended)
+- npm or yarn
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/realworld-app-backend-typescript-express-typeorm.git
+cd realworld-app-backend-typescript-express-typeorm
+
+# Install dependencies
+npm install
+
+# Copy environment variables file
+cp .env.example .env
+
+# Update the .env file with your MySQL connection details and JWT secret
+
+# Run database migrations
+npm run migration:run
+
+# Start the development server
+npm run dev
+```
+
+The API will be available at `http://localhost:8000/api`.
+
+# API Overview
+
+This API implements the RealWorld specification providing all the required endpoints:
+
+## Authentication
+
+- `POST /api/users/login` - Login for existing user
+- `POST /api/users` - Register a new user
+- `GET /api/user` - Get current user
+- `PUT /api/user` - Update user
+
+## Profiles
+
+- `GET /api/profiles/:username` - Get a profile
+- `POST /api/profiles/:username/follow` - Follow a user
+- `DELETE /api/profiles/:username/follow` - Unfollow a user
+
+## Articles
+
+- `GET /api/articles` - Get recent articles
+- `GET /api/articles/feed` - Get articles from followed users
+- `GET /api/articles/:slug` - Get an article
+- `POST /api/articles` - Create an article
+- `PUT /api/articles/:slug` - Update an article
+- `DELETE /api/articles/:slug` - Delete an article
+
+## Comments
+
+- `GET /api/articles/:slug/comments` - Get comments for an article
+- `POST /api/articles/:slug/comments` - Add comment to an article
+- `DELETE /api/articles/:slug/comments/:id` - Delete a comment
+
+## Favorites
+
+- `POST /api/articles/:slug/favorite` - Favorite an article
+- `DELETE /api/articles/:slug/favorite` - Unfavorite an article
+
+## Tags
+
+- `GET /api/tags` - Get all tags
+
+# Development Scripts
+
+```bash
+# Build the project
+npm run build
+
+# Start the server in production mode
+npm start
+
+# Start development server with hot-reloading
+npm run dev
+
+# Run tests
+npm test
+
+# Lint the code
+npm run lint
+
+# Database migrations
+npm run migration:generate # Generate new migrations
+npm run migration:run     # Run migrations
+npm run migration:revert  # Revert the latest migration
+```
+
+# Documentation
 
 API documentation is available via Swagger at `/api-docs` when the server is running.
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
+# License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- [RealWorld](https://github.com/gothinkster/realworld) for the application specification
-- [TypeORM](https://typeorm.io/) for the ORM framework
-- [Express.js](https://expressjs.com/) for the web framework
